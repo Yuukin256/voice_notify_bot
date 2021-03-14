@@ -1,0 +1,2 @@
+# voice_notify_bot
+Discordで通話が始まったときにお知らせするBot
