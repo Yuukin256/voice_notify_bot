@@ -41,8 +41,10 @@ npm install
 
 ```bash
 # yarn
+yarn build
 yarn start
 
 # npm
+npm run build
 npm start
 ```

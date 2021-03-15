@@ -6,7 +6,7 @@
 	"scripts": {
 		"build": "tsc",
 		"dev": "tsc -w",
-		"prestart": "cp .env dist/.env",
+		"prestart": "mkdir dist && cp .env dist/.env",
 		"start": "node dist/index.js"
 	},
 	"keywords": [],
