@@ -1,0 +1,36 @@
+{
+	"name": "voice_notify_bot",
+	"version": "1.0.0",
+	"description": "",
+	"main": "dist/index.js",
+	"scripts": {
+		"build": "tsc",
+		"dev": "tsc -w",
+		"prestart": "cp .env dist/.env",
+		"start": "node dist/index.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "MIT",
+	"devDependencies": {
+		"@types/keyv": "^3.1.1",
+		"@types/node": "^14.14.20",
+		"@types/ws": "^7.4.0",
+		"@typescript-eslint/eslint-plugin": "^4.9.1",
+		"@typescript-eslint/parser": "^4.9.1",
+		"eslint": "^7.15.0",
+		"eslint-config-prettier": "^7.0.0",
+		"eslint-plugin-prettier": "^3.2.0",
+		"prettier": "^2.2.1",
+		"typescript": "^4.1.2"
+	},
+	"dependencies": {
+		"dayjs": "^1.10.4",
+		"discord-akairo": "^8.1.0",
+		"discord.js": "^12.5.1",
+		"dotenv": "^8.2.0",
+		"keyv": "^4.0.3",
+		"keyv-file": "^0.2.0"
+	},
+	"repository": "https://github.com/Yuukin256/voice_notify_bot.git"
+}
