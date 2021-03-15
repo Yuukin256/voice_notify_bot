@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"outDir": "./dist",
+		"moduleResolution": "node",
+		"module": "commonjs",
+		"noImplicitReturns": true,
+		"noUnusedLocals": true,
+		"sourceMap": false,
+		"strict": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"target": "es6",
+		"lib": ["ESNext", "DOM"]
+	},
+	"include": ["src/*.ts", "src/commands/*.ts", "src/listeners/*.ts"]
+}
