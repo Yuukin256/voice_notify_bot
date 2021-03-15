@@ -1,11 +1,12 @@
 import { Command } from 'discord-akairo';
 import Discord from 'discord.js';
+import { Collection } from 'discord.js';
 import { MyClient } from '../client';
 
 // TODO: Fix
 
 interface Args {
-	channel: Discord.VoiceChannel;
+	channels: Collection<string, Discord.VoiceChannel>;
 }
 
 export default class RemoveNotifyMentionDataCommand extends Command {
@@ -16,12 +17,12 @@ export default class RemoveNotifyMentionDataCommand extends Command {
 			description: '通話開始時のメンション設定を削除する',
 			args: [
 				{
-					id: 'channel',
-					type: 'voiceChannel',
-					limit: 1,
+					id: 'channels',
+					type: 'voiceChannels',
 					prompt: {
 						start: 'メンション設定を削除したいボイスチャンネルのIDを入力してください',
 					},
+					default: new Collection(),
 				},
 			],
 		});
@@ -35,17 +36,21 @@ export default class RemoveNotifyMentionDataCommand extends Command {
 		}
 
 		const guild = message.guild;
-		const guildConfig = await this.client.config.get(guild.id);
+		const config = this.client.config;
+		const guildConfig = await config.get(guild.id);
 
-		const deleted = guildConfig.voiceChannels.delete(args.channel.id);
+		const contents = args.channels.map((channel) => {
+			const deleted = guildConfig.voiceChannels.delete(channel.id);
 
-		await this.client.config.set(guild.id, {
-			...guildConfig,
+			config.set(guild.id, {
+				...guildConfig,
+			});
+
+			return deleted
+				? `${channel.name}の設定を削除しました`
+				: `${channel.name}の設定を削除できませんでした (未設定かも)`;
 		});
 
-		const content = deleted
-			? `${args.channel.name}の設定を削除しました`
-			: `${args.channel.name}の設定を削除できませんでした (未設定かも)`;
-		return message.util.reply(content);
+		return message.util.reply(contents.join('\n'));
 	}
 }
