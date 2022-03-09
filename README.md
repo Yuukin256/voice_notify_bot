@@ -1,5 +1,8 @@
 # VoiceNotifyBot
 
+__ARCHIVED__
+同等の機能を持つ新しい Bot を製作しました。 [Yuukin256/voice-notify-bot](https://github.com/Yuukin256/voice-notify-bot)
+
 Discord で通話が始まったときにお知らせする Bot。
 
 # Features
